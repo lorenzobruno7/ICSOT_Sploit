@@ -1,5 +1,5 @@
 import socket
-import urlparse
+import urllib
 import re
 from distutils.util import strtobool
 
@@ -18,7 +18,7 @@ def url(address):
 
 
 def address(addr):
-    addr = urlparse.urlsplit(addr)
+    addr = urllib.parse.urlsplit(addr)
     return addr.netloc or addr.path
 
 

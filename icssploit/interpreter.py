@@ -13,6 +13,8 @@ from icssploit import utils
 
 if sys.platform == "darwin":
     import gnureadline as readline
+elif sys.platform == "win32":
+    import pyreadline as readline
 else:
     import readline
 
@@ -83,7 +85,7 @@ class BaseInterpreter(object):
         printer_queue.join()
         while True:
             try:
-                command, args = self.parse_line(raw_input(self.prompt))
+                command, args = self.parse_line(input(self.prompt))
                 if not command:
                     continue
                 command_handler = self.get_command_handler(command)
@@ -92,7 +94,7 @@ class BaseInterpreter(object):
                 utils.print_error(err)
             except EOFError:
                 utils.print_info()
-                utils.print_status("icssploit stopped")
+                utils.print_status("ICSsploit stopped")
                 break
             except KeyboardInterrupt:
                 utils.print_info()
@@ -157,13 +159,13 @@ class BaseInterpreter(object):
 
 
 class IcssploitInterpreter(BaseInterpreter):
-    history_file = os.path.expanduser("~/.isf_history")
+    history_file = os.path.expanduser("~/.icssploit_history")
     global_help = """Global commands:
     help                        Print this help menu
     use <module>                Select a module for usage
     exec <shell command> <args> Execute a command in a shell
     search <search term>        Search for appropriate module
-    exit                        Exit icssploit"""
+    exit                        Exit ICSsploit"""
 
     module_help = """Module commands:
     run                                 Run the selected module with the given options
@@ -180,7 +182,7 @@ class IcssploitInterpreter(BaseInterpreter):
         self.current_module = None
         self.raw_prompt_template = None
         self.module_prompt_template = None
-        self.prompt_hostname = 'isf'
+        self.prompt_hostname = 'icssploit'
         self.show_sub_commands = ('info', 'options', 'devices', 'all', 'creds', 'exploits', 'scanners')
 
         self.global_commands = sorted(['use ', 'exec ', 'help', 'exit', 'show ', 'search '])
@@ -210,10 +212,10 @@ class IcssploitInterpreter(BaseInterpreter):
                                                             
 				ICS Exploitation Framework
 
-Note     : ICSSPOLIT is fork from routersploit at 
-           https://github.com/reverse-shell/routersploit
-Dev Team : wenzhe zhu(dark-lbp)
-Version  : 0.1.0
+Note     : ICSsploit is a fork from ISF at 
+           https://github.com/dark-lbp/isf (wenzhe zhu)
+Dev Team : Tijl Deneut (Photubias)
+Version  : 0.0.1
 
 Exploits: {exploits_count} Scanners: {scanners_count} Creds: {creds_count}
 
@@ -239,7 +241,8 @@ ICS Exploits:
 
     @property
     def module_metadata(self):
-        return getattr(self.current_module, "_{}__info__".format(self.current_module.__class__.__name__))
+        utils.print_error(self.current_module.__class__.__name__)
+        return getattr(self.current_module, "_{}_.__info__".format(self.current_module.__class__.__name__))
 
     @property
     def prompt(self):
@@ -249,7 +252,9 @@ ICS Exploits:
 
         :return: prompt string with appropriate module prefix.
         """
+        utils.print_error(self.current_module)
         if self.current_module:
+            utils.print_error(self.module_metadata['name'])
             try:
                 return self.module_prompt_template.format(host=self.prompt_hostname, module=self.module_metadata['name'])
             except (AttributeError, KeyError):
