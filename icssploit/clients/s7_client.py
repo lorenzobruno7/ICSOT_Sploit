@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # coding:utf-8
 # Author: WenZhe Zhu
 from icssploit.clients.base import Base
@@ -205,7 +205,7 @@ class S7Client(Base):
             self.logger.error("Password length must between 1 to 8")
             return None
         else:
-            password += '20'.decode('hex') * (8 - len(password))
+            password += bytearray.fromhex('20') * (8 - len(password))
             for i in range(8):
                 if i < 2:
                     temp_data = ord(password[i])

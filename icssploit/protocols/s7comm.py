@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # coding:utf-8
 # Author: WenZhe Zhu
 from scapy.all import conf
@@ -672,7 +672,7 @@ class S7ForceDataReq(Packet):
         ByteEnumField("ReturnCode", 0xff, S7_RETURN_CODE),
         ByteEnumField("TransportSize", 0x09, S7_TRANSPORT_SIZE_IN_DATA_ITEMS),
         FieldLenField("DataLength", None, fmt="H", length_of="Data", adjust=lambda pkt, x: x),
-        StrLenField("Data", "00140004000000000001000000010001000100010001000000000000".decode('hex'),
+        StrLenField("Data", bytearray.fromhex("00140004000000000001000000010001000100010001000000000000"),
                     length_from=lambda x: x.DataLength)
     ]
 

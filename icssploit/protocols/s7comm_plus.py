@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # coding:utf-8
 # Author: WenZhe Zhu
 from scapy.all import conf

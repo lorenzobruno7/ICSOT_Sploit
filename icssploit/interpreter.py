@@ -241,8 +241,7 @@ ICS Exploits:
 
     @property
     def module_metadata(self):
-        utils.print_error(self.current_module.__class__.__name__)
-        return getattr(self.current_module, "_{}_.__info__".format(self.current_module.__class__.__name__))
+        return getattr(self.current_module.__class__, "__info__")
 
     @property
     def prompt(self):
@@ -252,9 +251,8 @@ ICS Exploits:
 
         :return: prompt string with appropriate module prefix.
         """
-        utils.print_error(self.current_module)
         if self.current_module:
-            utils.print_error(self.module_metadata['name'])
+            #utils.print_error(self.module_metadata['name'])
             try:
                 return self.module_prompt_template.format(host=self.prompt_hostname, module=self.module_metadata['name'])
             except (AttributeError, KeyError):
@@ -323,7 +321,7 @@ ICS Exploits:
         try:
             self.current_module = utils.import_exploit(module_path)()
         except icssploitException as err:
-            utils.print_error(err.message)
+            utils.print_error(str(err))
 
     @utils.stop_after(2)
     def complete_use(self, text, *args, **kwargs):

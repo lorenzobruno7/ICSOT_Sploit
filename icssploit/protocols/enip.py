@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # coding:utf-8
 from scapy.all import conf
 from scapy.packet import *
@@ -1435,7 +1435,7 @@ class ENIPHeader(Packet):
         LEIntField("Session", 0x00000000),
         LEIntEnumField("Status", 0x00000000, STATUS_CODES),
         StrFixedLenField(
-            "SenderContext", '0000000000000000'.decode('hex'), length=8),
+            "SenderContext", bytearray.fromhex('0000000000000000'), length=8),
         XIntField("Options", 0x00000000)
     ]
 
