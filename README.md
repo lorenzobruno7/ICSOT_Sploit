@@ -55,9 +55,9 @@ These protocol can used in other Fuzzing framework like [Kitty](https://github.c
 * scapy [We suggest install scapy manual with this official document](http://scapy.readthedocs.io/en/latest/installation.html)
 
 ## Install on Kali
-    git clone https://github.com/dark-lbp/isf/
+    git clone https://github.com/dark-lbp/isf/](https://github.com/lorenzobruno7/ICSOT_Sploit.git
     cd isf
-    python isf.py
+    python icssploit.py
 
 
 # Usage
@@ -78,10 +78,10 @@ These protocol can used in other Fuzzing framework like [Kitty](https://github.c
         Dev Team : wenzhe zhu(dark-lbp)
         Version  : 0.1.0
         
-        Exploits: 2 Scanners: 0 Creds: 13
+        Exploits: 8 Scanners: 6 Creds: 14
         
         ICS Exploits:
-            PLC: 2          ICS Switch: 0
+            PLC: 7          ICS Switch: 0
             Software: 0
         
         isf >
