@@ -28,7 +28,8 @@ ICSsploit is a exploitation framework based on Python, it's similar to metasploi
 | vxworks_6_scan          | scanners/vxworks_6_scan.py                                        | Vxworks 6.x scanner                     |
 | s7comm_scan             | scanners/s7comm_scan.py                                           | S7comm scanner                          |
 | enip_scan               | scanners/enip_scan.py                                             | EthernetIP scanner                      |
-
+| bacnet                  | scanners/bacnet_scan.py                                           | Bacnet     scanner                      |
+| enip_scan               | scanners/dnp3_scan.py                                             | DNP3       scanner                      |
 
 
 ## ICS Protocols Module (Scapy Module)

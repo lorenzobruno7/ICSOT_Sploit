@@ -653,7 +653,7 @@ def mkdir_p(path):  # TODO: cover with tests
         else:
             raise
 
-
+# Function used to scan target with nmap
 def port_scan(protocol, target, port):
     nm = nmap.PortScanner()
     try:
@@ -663,6 +663,7 @@ def port_scan(protocol, target, port):
         elif str(protocol).upper() == "UDP":
             print_status("UDP Scan requires root privileges will using sudo to scan target ")
             nm.scan(hosts=target, ports=str(port), arguments='-Pn -sU ', sudo=True)
+            print(nm)
             return nm
     except Exception as err:
         print_error(err)

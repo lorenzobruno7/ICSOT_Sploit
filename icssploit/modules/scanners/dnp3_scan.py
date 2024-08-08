@@ -1,0 +1,50 @@
+from icssploit import (
+    exploits,       # exploit lib
+    print_success,  # used to print success message
+    print_status,   # used to print normal message
+    print_error,    # used to print error message
+    mute,           # used to mute function print to stdout
+    validators,     # used to verify module options value
+)
+
+from icssploit.utils import *
+
+
+#Define the table header for the output 
+TABLE_HEADER = ['Device Name', 'Device Type', "MAC Address", "IP Address", "Netmask", "GateWay"]
+DNP3_DEVICES = []
+
+# Define the scan class
+class Exploit(exploits.Exploit):
+    # Define info about the exploit
+    __info__ = {
+        'name': 'dnp3 device scan',
+        'authors': [
+            'lorenzo bruno <lorenzo.bruno7[at]studenti.unimi.it>' 
+        ],
+        'description': 'Scan all dnp3 device.',
+        'references': [
+        ],
+    }
+
+    # Parameters used by the scan
+    target = exploits.Option('', 'Target IP address')
+    port = exploits.Option(20000 , 'DNP3 port, default is 20000/UDP', validators=validators.integer)
+    verbose = exploits.Option(0, 'Scapy verbose level, 0 to 2', validators=validators.integer)
+    result = []
+
+    # Function to run the scan using nmap
+    def run(self):
+        print_status("Scanning the target: " + self.target + " with port: " + str(self.port))
+        nm = nmap.PortScanner()
+        scan_result = nm.scan(self.target, str(self.port), arguments='--script bacnet-info -sU', sudo=True)
+        if self.target in scan_result['scan']:
+            host_info = scan_result['scan'][self.target]
+            print(f"Host is up ({host_info['status']['state']} state).\n")
+            if 'udp' in host_info and int(self.port) in host_info['udp']:
+                port_info = host_info['udp'][int(self.port)]
+            script_output = port_info.get('script', {}).get('bacnet-info', 'No additional info')
+            print(script_output)
+            print(f"Nmap done: scanned in {scan_result['nmap']['scanstats']['elapsed']} seconds")
+        else:
+            print(f"No information available for IP: {self.target}")
