@@ -1,5 +1,34 @@
-# ICSsploit (Industrial Control System Exploitation)
-ICSsploit is a exploitation framework based on Python, it's similar to metasploit framework. 
+# OT/ICSsploit (Operational Technology/Industrial Control System) Exploitation Framework
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-green.svg)](http://www.python.org/download/)
+
+
+The OT/ICSsploit Framework is an open-source exploitation framework written in Python for OT/ICS environment
+
+It consists of various modules that aid penetration testing operations:
+
+* exploits - modules that take advantage of identified vulnerabilities
+* creds - modules designed to test credentials against network services
+* scanners - modules that check if a target is vulnerable to any exploit
+* payloads - modules that are responsible for generating payloads for various architectures and injection points
+* generic - modules that perform generic attacks 
+
+Check the relevant folder for more information on the specific module.
+
+# Install
+
+## Python requirements
+* gnureadline (OSX only)
+* requests
+* paramiko
+* beautifulsoup4
+* pysnmp
+* python-nmap
+* scapy [We suggest install scapy manual with this official document](http://scapy.readthedocs.io/en/latest/installation.html)
+
+## Install on Kali
+    git clone https://github.com/dark-lbp/isf/](https://github.com/lorenzobruno7/ICSOT_Sploit.git
+    cd ICSOT_Sploit
+    python icssploit.py
 
 ## ICS Protocol Clients
 | Name               | Path                                   | Description            |
@@ -28,7 +57,8 @@ ICSsploit is a exploitation framework based on Python, it's similar to metasploi
 | vxworks_6_scan          | scanners/vxworks_6_scan.py                                        | Vxworks 6.x scanner                     |
 | s7comm_scan             | scanners/s7comm_scan.py                                           | S7comm scanner                          |
 | enip_scan               | scanners/enip_scan.py                                             | EthernetIP scanner                      |
-
+| bacnet_scan                  | scanners/bacnet_scan.py                                           | BACnet     scanner                      |
+| dnp3_scan               | scanners/dnp3_scan.py                                             | DNP3       scanner                      |
 
 
 ## ICS Protocols Module (Scapy Module)
@@ -42,64 +72,20 @@ These protocol can used in other Fuzzing framework like [Kitty](https://github.c
 | s7comm                  | icssploit/protocols/s7comm.py                                     | S7comm Protocol                         |
 
 
-
-# Install
-
-## Python requirements
-* gnureadline (OSX only)
-* requests
-* paramiko
-* beautifulsoup4
-* pysnmp
-* python-nmap
-* scapy [We suggest install scapy manual with this official document](http://scapy.readthedocs.io/en/latest/installation.html)
-
-## Install on Kali
-    git clone https://github.com/dark-lbp/isf/
-    cd isf
-    python isf.py
-
-
-# Usage
-        root@kali:~/Desktop/temp/isf# python isf.py
-        
-          _____ _____  _____ _____ _____  _      ____ _____ _______
-         |_   _/ ____|/ ____/ ____|  __ \| |    / __ \_   _|__   __|
-           | || |    | (___| (___ | |__) | |   | |  | || |    | |
-           | || |     \___ \\___ \|  ___/| |   | |  | || |    | |
-          _| || |____ ____) |___) | |    | |___| |__| || |_   | |
-         |_____\_____|_____/_____/|_|    |______\____/_____|  |_|
-        
-        
-                        ICS Exploitation Framework
-        
-        Note     : ICSSPOLIT is fork from routersploit at
-                   https://github.com/reverse-shell/routersploit
-        Dev Team : wenzhe zhu(dark-lbp)
-        Version  : 0.1.0
-        
-        Exploits: 2 Scanners: 0 Creds: 13
-        
-        ICS Exploits:
-            PLC: 2          ICS Switch: 0
-            Software: 0
-        
-        isf >
-
-## Exploits
-    isf > use exploits/plcs/
+## Module
+How to use a module:
+    icssploit > use exploits/plcs/
     exploits/plcs/siemens/  exploits/plcs/vxworks/
-    isf > use exploits/plcs/siemens/s7_300_400_plc_control
+    icssploit > use exploits/plcs/siemens/s7_300_400_plc_control
     exploits/plcs/siemens/s7_300_400_plc_control
-    isf > use exploits/plcs/siemens/s7_300_400_plc_control
-    isf (S7-300/400 PLC Control) >
+    icssploit > use exploits/plcs/siemens/s7_300_400_plc_control
+    icssploit (S7-300/400 PLC Control) >
     
 You can use the tab key for completion.
 
-
 ## Options
 ### Display module options:
-    isf (S7-300/400 PLC Control) > show options
+    icssploit (S7-300/400 PLC Control) > show options
     
     Target options:
     
@@ -120,12 +106,12 @@ You can use the tab key for completion.
     isf (S7-300/400 PLC Control) >
     
 ### Set options
-    isf (S7-300/400 PLC Control) > set target 192.168.70.210
+    icssploit (S7-300/400 PLC Control) > set target 192.168.70.210
     [+] {'target': '192.168.70.210'}
     
 
 ## Run module
-    isf (S7-300/400 PLC Control) > run
+    icssploit (S7-300/400 PLC Control) > run
     [*] Running module...
     [+] Target is alive
     [*] Sending packet to target
@@ -133,7 +119,7 @@ You can use the tab key for completion.
     isf (S7-300/400 PLC Control) >
     
 ## Display information about exploit
-    isf (S7-300/400 PLC Control) > show info
+    icssploit (S7-300/400 PLC Control) > show info
     
     Name:
     S7-300/400 PLC Control
@@ -149,7 +135,7 @@ You can use the tab key for completion.
     
     References:
     
-    isf (S7-300/400 PLC Control) >
+    icssploit (S7-300/400 PLC Control) >
     
 # Documents
 * [Modbus-TCP Client usage](docs/modbus_tcp_client.en-us.md)
