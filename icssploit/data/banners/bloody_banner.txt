@@ -1,0 +1,23 @@
+
+██▓ ▄████▄    ██████   ██████  ██▓███   ██▓     ▒█████   ██▓▄▄▄█████▓
+▓██▒▒██▀ ▀█  ▒██    ▒ ▒██    ▒ ▓██░  ██▒▓██▒    ▒██▒  ██▒▓██▒▓  ██▒ ▓▒
+▒██▒▒▓█    ▄ ░ ▓██▄   ░ ▓██▄   ▓██░ ██▓▒▒██░    ▒██░  ██▒▒██▒▒ ▓██░ ▒░
+░██░▒▓▓▄ ▄██▒  ▒   ██▒  ▒   ██▒▒██▄█▓▒ ▒▒██░    ▒██   ██░░██░░ ▓██▓ ░ 
+░██░▒ ▓███▀ ░▒██████▒▒▒██████▒▒▒██▒ ░  ░░██████▒░ ████▓▒░░██░  ▒██▒ ░ 
+░▓  ░ ░▒ ▒  ░▒ ▒▓▒ ▒ ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░░ ▒░▓  ░░ ▒░▒░▒░ ░▓    ▒ ░░   
+ ▒ ░  ░  ▒   ░ ░▒  ░ ░░ ░▒  ░ ░░▒ ░     ░ ░ ▒  ░  ░ ▒ ▒░  ▒ ░    ░    
+ ▒ ░░        ░  ░  ░  ░  ░  ░  ░░         ░ ░   ░ ░ ░ ▒   ▒ ░  ░      
+ ░  ░ ░            ░        ░               ░  ░    ░ ░   ░           
+    ░                                                                 
+
+				OT/ICS Exploitation Framework
+
+Note     : A python based OT/ICS framework 
+Dev Team : Lorenzo Bruno
+Version  : ???
+
+Exploits: {exploits_count} Scanners: {scanners_count} Creds: {creds_count}
+
+ICS Exploits:
+    PLC: {plc_exploit_count}          ICS Switch: {ics_switch_exploits_count}
+    Software: {ics_software_exploits_count}

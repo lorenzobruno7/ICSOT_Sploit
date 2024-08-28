@@ -1,5 +1,6 @@
 from __future__ import print_function
 import os
+import random
 import sys
 import itertools
 import traceback
@@ -77,6 +78,15 @@ class BaseInterpreter(object):
             except AttributeError:
                 raise icssploitException("Unknown command: '{}'".format(command))
         return command_handler
+    
+    def choose_random_banner(self):
+        data_dir = os.path.join(os.getcwd(), './icssploit/data/banners')
+        txt_files = [f for f in os.listdir(data_dir) if f.endswith('.txt')]
+        if txt_files:
+            random_file = random.choice(txt_files)
+            with open(os.path.join(data_dir, random_file), 'r') as file:
+                return file.read()
+        return "ICSsploit - ICS/SCADA Exploitation Framework"
 
     def start(self):
         """ icssploit main entry point. Starting interpreter loop. """
@@ -201,27 +211,7 @@ class IcssploitInterpreter(BaseInterpreter):
         self.main_modules_dirs = [module for module in os.listdir(utils.MODULES_DIR) if not module.startswith("__")]
         self.__parse_prompt()
 
-        self.banner = """ 
-  _____ _____  _____ _____ _____  _      ____ _____ _______ 
- |_   _/ ____|/ ____/ ____|  __ \| |    / __ \_   _|__   __|
-   | || |    | (___| (___ | |__) | |   | |  | || |    | |   
-   | || |     \___ \\\___ \|  ___/| |   | |  | || |    | |   
-  _| || |____ ____) |___) | |    | |___| |__| || |_   | |   
- |_____\_____|_____/_____/|_|    |______\____/_____|  |_|   
-                                                            
-                                                            
-				ICS Exploitation Framework
-
-Note     : OT/ICS framework 
-Dev Team : Lorenzo Bruno
-Version  : ???
-
-Exploits: {exploits_count} Scanners: {scanners_count} Creds: {creds_count}
-
-ICS Exploits:
-    PLC: {plc_exploit_count}          ICS Switch: {ics_switch_exploits_count}
-    Software: {ics_software_exploits_count}
-""".format(exploits_count=self.modules_count['exploits'] + self.modules_count['extra_exploits'],
+        self.banner = self.choose_random_banner().format(exploits_count=self.modules_count['exploits'] + self.modules_count['extra_exploits'],
            scanners_count=self.modules_count['scanners'] + self.modules_count['extra_scanners'],
            creds_count=self.modules_count['creds'] + self.modules_count['extra_creds'],
            plc_exploit_count=self.modules_count['plcs'],

@@ -1,0 +1,19 @@
+  _____ _____  _____ _____ _____  _      ____ _____ _______ 
+ |_   _/ ____|/ ____/ ____|  __ \| |    / __ \_   _|__   __|
+   | || |    | (___| (___ | |__) | |   | |  | || |    | |   
+   | || |     \___ \\\___\|  ___/| |   | |  | || |    | |   
+  _| || |____ ____) |___) | |    | |___| |__| || |_   | |   
+ |_____\_____|_____/_____/|_|    |______\____/_____|  |_|   
+                                                            
+                                                            
+				OT/ICS Exploitation Framework
+
+Note     : A python based OT/ICS framework 
+Dev Team : Lorenzo Bruno
+Version  : ???
+
+Exploits: {exploits_count} Scanners: {scanners_count} Creds: {creds_count}
+
+ICS Exploits:
+    PLC: {plc_exploit_count}          ICS Switch: {ics_switch_exploits_count}
+    Software: {ics_software_exploits_count}
