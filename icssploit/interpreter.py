@@ -212,10 +212,9 @@ class IcssploitInterpreter(BaseInterpreter):
                                                             
 				ICS Exploitation Framework
 
-Note     : ICSsploit is a fork from ISF at 
-           https://github.com/dark-lbp/isf (wenzhe zhu)
-Dev Team : Tijl Deneut (Photubias)
-Version  : 0.0.1
+Note     : OT/ICS framework 
+Dev Team : Lorenzo Bruno
+Version  : ???
 
 Exploits: {exploits_count} Scanners: {scanners_count} Creds: {creds_count}
 
@@ -241,7 +240,7 @@ ICS Exploits:
 
     @property
     def module_metadata(self):
-        return getattr(self.current_module.__class__, "__info__")
+        return getattr(self.current_module, "_{}__info__".format(self.current_module.__class__.__name__))
 
     @property
     def prompt(self):
@@ -252,6 +251,7 @@ ICS Exploits:
         :return: prompt string with appropriate module prefix.
         """
         if self.current_module:
+            #Print used to see runtime error
             #utils.print_error(self.module_metadata['name'])
             try:
                 return self.module_prompt_template.format(host=self.prompt_hostname, module=self.module_metadata['name'])
@@ -391,7 +391,7 @@ ICS Exploits:
         if text:
             return [' '.join((attr, "")) for attr in GLOBAL_OPTS.keys() if attr.startswith(text)]
         else:
-            return GLOBAL_OPTS.keys()
+            return list(GLOBAL_OPTS.keys())
 
     @utils.module_required
     def get_opts(self, *args):

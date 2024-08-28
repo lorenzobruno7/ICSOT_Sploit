@@ -327,7 +327,7 @@ class S7Client(Base):
         if block_type in S7_BLOCK_TYPE_IN_FILE_NAME.keys():
             file_block_type = block_type
         else:
-            for key, name in S7_BLOCK_TYPE_IN_FILE_NAME.iteritems():
+            for key, name in S7_BLOCK_TYPE_IN_FILE_NAME.items():
                 if name == block_type:
                     file_block_type = key
                     break
@@ -400,7 +400,7 @@ class S7Client(Base):
         mem_length, mc7_length, block_type, block_num = self.get_info_from_block(block_data)
         self.logger.info("Start download %s%s to targets" % (block_type, block_num))
         file_block_type = None
-        for key, name in S7_BLOCK_TYPE_IN_FILE_NAME.iteritems():
+        for key, name in S7_BLOCK_TYPE_IN_FILE_NAME.items():
             if name == block_type:
                 file_block_type = key
                 break
@@ -483,7 +483,7 @@ class S7Client(Base):
         mem_length, mc7_length, block_type, block_num = self.get_info_from_block(block_data)
         self.logger.info("Start download %s%s to targets" % (block_type, block_num))
         file_block_type = None
-        for key, name in S7_BLOCK_TYPE_IN_FILE_NAME.iteritems():
+        for key, name in S7_BLOCK_TYPE_IN_FILE_NAME.items():
             if name == block_type:
                 file_block_type = key
                 break
@@ -593,7 +593,7 @@ class S7Client(Base):
 
     @staticmethod
     def get_transport_size_from_data_type(data_type):
-        for key, name in S7_TRANSPORT_SIZE_IN_PARM_ITEMS.iteritems():
+        for key, name in S7_TRANSPORT_SIZE_IN_PARM_ITEMS.items():
             if isinstance(data_type, str):
                 if name.startswith(data_type.upper()):
                     return key

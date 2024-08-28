@@ -363,9 +363,9 @@ def print_table(headers, *args, **kwargs):
         for idx, element in enumerate(arg):
             content_line_data[idx] = str(element)
 
-        while not all(map(lambda x: len(content_line_data[x]) == 0, content_line_data.keys())):
+        while not all(map(lambda x: len(content_line_data[x]) == 0, list(content_line_data.keys()) )):
             content_line = '   '
-            for idx in content_line_data.keys():
+            for idx in list(content_line_data.keys()):
                 element = content_line_data[idx][:max_column_length]
                 content_line = "".join((
                     content_line,
@@ -416,7 +416,7 @@ def pprint_dict_in_order(dictionary, order=None):
         else:
             print_info(body)
 
-    keys = dictionary.keys()
+    keys = list(dictionary.keys())
     for element in order:
         try:
             key = keys.pop(keys.index(element))
