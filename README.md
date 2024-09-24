@@ -1,6 +1,5 @@
 # OT/ICSsploit (Operational Technology/Industrial Control System) Exploitation Framework
-[![Python 3.11](https://img.shields.io/badge/Python-3.11-green.svg)](http://www.python.org/download/)
-
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-green.svg)](http://www.python.org/download/) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/lorenzobruno7/ICSOT_Sploit/issues)
 
 The OT/ICSsploit Framework is an open-source exploitation framework written in Python for OT/ICS environment
 
@@ -17,16 +16,17 @@ Check the relevant folder for more information on the specific module.
 # Install
 
 ## Python requirements
-* gnureadline (OSX only)
-* requests
-* paramiko
-* beautifulsoup4
-* pysnmp
-* python-nmap
-* scapy [We suggest install scapy manual with this official document](http://scapy.readthedocs.io/en/latest/installation.html)
+* [gnureadline](https://pypi.org/project/gnureadline/) (OSX only)
+* [requests](https://pypi.org/project/requests/)
+* [paramiko](https://www.paramiko.org/installing.html)
+* [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+* [pysnmp](https://pypi.org/project/pysnmp/)
+* [python-nmap](https://pypi.org/project/python-nmap/)
+* [scapy](http://scapy.readthedocs.io/en/latest/installation.html)
+* [BAC0](https://bac0.readthedocs.io/en/stable/getstarted.html)
 
 ## Install on Kali
-    git clone https://github.com/dark-lbp/isf/](https://github.com/lorenzobruno7/ICSOT_Sploit.git
+    git clone https://github.com/lorenzobruno7/ICSOT_Sploit.git
     cd ICSOT_Sploit
     python icssploit.py
 
@@ -48,6 +48,7 @@ Check the relevant folder for more information on the specific module.
 | crash_qnx_inetd_tcp_service | exploits/plcs/qnx/crash_qnx_inetd_tcp_service.py              | QNX Inetd TCP service dos               |
 | qconn_remote_exec       | exploits/plcs/qnx/qconn_remote_exec.py                            | QNX qconn remote code execution         |
 | profinet_set_ip         | exploits/plcs/siemens/profinet_set_ip.py                          | Profinet DCP device IP config           |
+| BBMD_auth_bypass         | exploits/BACNET/BBMD_auth_bypass.py                          | Retrieve network information by BBMD device           |
 
 
 ## Scanner Module
