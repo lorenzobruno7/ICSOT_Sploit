@@ -74,7 +74,7 @@ These protocol can used in other Fuzzing framework like [Kitty](https://github.c
 
 
 ## Module
-How to use a module:
+### How to use a module:
     icssploit > use exploits/plcs/
     exploits/plcs/siemens/  exploits/plcs/vxworks/
     icssploit > use exploits/plcs/siemens/s7_300_400_plc_control
